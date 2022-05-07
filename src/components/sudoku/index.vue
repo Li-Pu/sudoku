@@ -1,22 +1,11 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
-
 import sudokuCell from './cell.vue';
-
-const container = ref<HTMLDivElement | null>(null)
-const dim = ref<string>('100%')
-
-// onMounted(() => {
-//     if (container.value) {
-//         dim.value = Math.min(container.value?.offsetWidth, container.value?.offsetHeight) + 'px'
-//     }
-// })
 
 </script>
 
 <template>
     <div class="sudoku-wrapper">
-        <div class="sudoku-container" ref="container" :style="{ width: dim, height: dim }">
+        <div class="sudoku-container">
             <div class="sudoku-row" v-for="rowIndex in 9" :key="rowIndex">
                 <div class="sudoku-column" v-for="colomnIndex in 9" :key="rowIndex + '-' + colomnIndex">
                     <sudoku-cell :value="Math.floor(Math.random() * 9 + 1)" />
@@ -29,7 +18,10 @@ const dim = ref<string>('100%')
 <style scoped>
 .sudoku-wrapper {
     position: relative;
-    padding-bottom: 100%;
+    width: 80%;
+    left: 10%;
+    top: 10%;
+    padding-bottom: 80%;
 }
 
 .sudoku-container {
